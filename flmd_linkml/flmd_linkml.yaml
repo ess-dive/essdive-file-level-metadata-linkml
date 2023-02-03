@@ -1,0 +1,73 @@
+id: https://w3id.org/linkml/essdive/flmd
+name: flmd_scehma
+description: "schema for fileeveletadata (flmd) reporting format":
+               description:
+                 required:
+prefixes:
+  linkml:https://w3id.org/linkml/
+imports:
+  linkml:types:
+    description:
+    required:
+default_range: string
+
+classes:
+  flmd:
+    is_a: #not needed, but regarding managing complex relationships between files, what are the kinds of relationships that we are trying to model
+    description: file level metadata for a data package uploaded on essive:
+                   description:
+                     required:
+    class_uri: #what will be the namespace?
+  attributes:
+    File_Name:
+      description:
+      required:
+    File_Description:
+      description:
+      required:
+    Standard:
+      description:
+      required:
+    UTC_Offset:
+      description:
+      required:
+    File_Version:
+      description:
+      required:
+    Contact:
+      description:
+      required:
+    Date_Start:
+      description:
+      required:
+    Date_End:
+      description:
+      required:
+    Northwest_Latitude_Coordinate:
+      description:
+      required:
+    Northwest_Longitude_Coordinate:
+      description:
+      required:
+    Southeast_Latitude_Coordinate:
+      description:
+      required:
+    Southeast_Longitude_Coordinate:
+      description:
+      required:
+    Latitude:
+      description:
+      required:
+    Longitude:
+      description:
+      required:
+    Missing_Value_Codes:
+      description:
+      required:
+    Data_Orientation:
+      description:
+      required:
+    Notes:
+      description:
+      required:
+
