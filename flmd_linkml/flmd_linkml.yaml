@@ -1,73 +1,86 @@
 id: https://w3id.org/linkml/essdive/flmd
-name: flmd_scehma
-description: "schema for fileeveletadata (flmd) reporting format":
-               description:
-                 required:
+name: flmd_schema
+description: schema for file level metadata (flmd) reporting format
 prefixes:
-  linkml:https://w3id.org/linkml/
+  linkml: https://w3id.org/linkml/
 imports:
-  linkml:types:
-    description:
-    required:
+  - linkml:types
 default_range: string
 
 classes:
-  flmd:
-    is_a: #not needed, but regarding managing complex relationships between files, what are the kinds of relationships that we are trying to model
-    description: file level metadata for a data package uploaded on essive:
-                   description:
-                     required:
-    class_uri: #what will be the namespace?
-  attributes:
-    File_Name:
-      description:
-      required:
-    File_Description:
-      description:
-      required:
-    Standard:
-      description:
-      required:
-    UTC_Offset:
-      description:
-      required:
-    File_Version:
-      description:
-      required:
-    Contact:
-      description:
-      required:
-    Date_Start:
-      description:
-      required:
-    Date_End:
-      description:
-      required:
-    Northwest_Latitude_Coordinate:
-      description:
-      required:
-    Northwest_Longitude_Coordinate:
-      description:
-      required:
-    Southeast_Latitude_Coordinate:
-      description:
-      required:
-    Southeast_Longitude_Coordinate:
-      description:
-      required:
-    Latitude:
-      description:
-      required:
-    Longitude:
-      description:
-      required:
-    Missing_Value_Codes:
-      description:
-      required:
-    Data_Orientation:
-      description:
-      required:
-    Notes:
-      description:
-      required:
+  FileLevelMetadata:
+#    is_a: #not needed, but regarding managing complex relationships between files, what are the kinds of relationships that we are trying to model
+    description: file level metadata for a data package uploaded on essdive
+#    class_uri: #what will be the namespace?
+
+    attributes:
+
+      File_Name:
+        required: true
+        description: Name of the file
+
+      File_Description:
+        description: "A brief description of the file"
+        required: true
+
+      Standard:
+        description: Standard applied to the data file.
+        required: # strongly recommended
+
+      UTC_Offset:
+        description: Local Standard Time Offset
+        required: # strongly recommended
+
+      File_Version:
+        description: The version of the file.
+        required: false
+
+      Contact:
+        description: Contact for the file.
+        required: false
+
+      Date_Start:
+        description: The earliest date in the file.
+        required: false
+#        format:
+
+      Date_End:
+        description:
+        required:
+
+      Northwest_Latitude_Coordinate:
+        description:
+        required:
+
+      Northwest_Longitude_Coordinate:
+        description:
+        required:
+
+      Southeast_Latitude_Coordinate:
+        description:
+        required:
+
+      Southeast_Longitude_Coordinate:
+        description:
+        required:
+
+      Latitude:
+        description:
+        required:
+
+      Longitude:
+        description:
+        required:
+
+      Missing_Value_Codes:
+        description:
+        required:
+
+      Data_Orientation:
+        description:
+        required:
+
+      Notes:
+        description:
+        required:
 
