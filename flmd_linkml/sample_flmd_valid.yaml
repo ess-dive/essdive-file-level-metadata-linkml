@@ -1,0 +1,9 @@
+# instance of FileLevelMetadata
+
+# linkml-validate -s flmd_linkml.yaml sample_flmd_valid.yaml
+
+
+File_Name: flmd_ameriflux
+File_Description: flmd data for ameriflux data package
+Date_Start: 2023-12-12
+Southeast_Longitude_Coordinate: 20.02

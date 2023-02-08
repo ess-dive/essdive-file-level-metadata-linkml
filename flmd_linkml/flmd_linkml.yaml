@@ -33,54 +33,46 @@ classes:
 
       File_Version:
         description: The version of the file.
-        required: false
 
       Contact:
         description: Contact for the file.
-        required: false
 
       Date_Start:
         description: The earliest date in the file.
-        required: false
-#        format:
+        range: date # yyyy-mm-dd # https://linkml.io/linkml-model/docs/Date/
 
       Date_End:
-        description:
-        required:
+        description: The latest date in the file.
+        range: date # yyyy-mm-dd # https://linkml.io/linkml-model/docs/Date/
 
       Northwest_Latitude_Coordinate:
-        description:
-        required:
+        description: Northwest Latitude Coordinate for non-point location.
+        range: double # decimal degrees
 
       Northwest_Longitude_Coordinate:
-        description:
-        required:
+        description: Northwest Longitude Coordinate for non-point location.
+        range: double # decimal degrees
 
       Southeast_Latitude_Coordinate:
-        description:
-        required:
+        description: Southeast Latitude Coordinate for non-point location.
+        range: double # decimal degrees
 
       Southeast_Longitude_Coordinate:
-        description:
-        required:
+        description: Southeast Longitude Coordinate for non-point location.
+        range: double # decimal degrees:
 
       Latitude:
-        description:
-        required:
+        description: Coordinate for single point location.
 
       Longitude:
-        description:
-        required:
+        description: Coordinate for single point location.
 
       Missing_Value_Codes:
-        description:
-        required:
+        description: Report missing value codes
 
       Data_Orientation:
-        description:
-        required:
+        description: Orientation of tabular data
 
       Notes:
-        description:
-        required:
+        description: Any information the provider would like to add.
 
