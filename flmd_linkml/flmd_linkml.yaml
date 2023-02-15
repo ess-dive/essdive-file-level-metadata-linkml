@@ -9,7 +9,6 @@ default_range: string
 
 classes:
   FileLevelMetadata:
-#    is_a: #not needed, but regarding managing complex relationships between files, what are the kinds of relationships that we are trying to model
     description: file level metadata for a data package uploaded on essdive
 #    class_uri: #what will be the namespace?
 
@@ -17,62 +16,88 @@ classes:
 
       File_Name:
         required: true
-        description: Name of the file
+        description: Name of the file. 
+          Provide the name of the associated file. File names should be unique and be as descriptive as possible about the file contents. Use only letters (e.g. CamelCase), numbers, and underscores. Do not include spaces. Hyphens allowed but not preferred. Use "*" wildcard when the FLMD applies to multiple files. For example - the same FLMD applies to all soil core files in this data package - "soil_cores_*.csv"
+
 
       File_Description:
-        description: "A brief description of the file"
+        description: A brief description of the file.
+          A brief description (minimum 30 characters) of the file and what distinguishes this file from other files in the data package. Include information about the type of data (images, observations, experimental, etc.)
         required: true
 
       Standard:
         description: Standard applied to the data file.
+          Identify if an ESS-DIVE Reporting Format or any other data or metadata standard was applied to the data file.
         required: # strongly recommended
 
       UTC_Offset:
-        description: Local Standard Time Offset
+        description: Local Standard Time Offset.
+          Report the Local Standard Time offset (+/- `hours`) or time zone (abbreviations allowed). Do not report time using Daylight Savings Time.
         required: # strongly recommended
 
       File_Version:
         description: The version of the file.
+          This is the version of the data file being described in the FLMD. The data file version is assigned by the data provider and not by the system. This would change if the data file is updated after the data package is published. Changes should be explained in the Notes field.
 
       Contact:
         description: Contact for the file.
+          Provide first and last name of the contact for the file. This should be someone with information already recorded at the Data Package Level.
 
       Date_Start:
         description: The earliest date in the file.
-        range: date # yyyy-mm-dd # https://linkml.io/linkml-model/docs/Date/
+          All dates must follow the ISO 8601 standard. This field can be date only following the ISO 8601 standard (YYYY-MM-DD) and completed to known precision (e.g. YYYY-MM, YYYY). The FLMD Extractor can extract the start/end date from a CSV file following the CSV Reporting Format.
+        range: date
 
       Date_End:
         description: The latest date in the file.
-        range: date # yyyy-mm-dd # https://linkml.io/linkml-model/docs/Date/
+          All dates must follow the ISO 8601 standard. This field can be date only following the ISO 8601 standard (YYYY-MM-DD) and completed to known precision (e.g. YYYY-MM, YYYY). The FLMD Extractor can extract the start/end date from a CSV file following the CSV Reporting Format.
+        range: date
 
       Northwest_Latitude_Coordinate:
         description: Northwest Latitude Coordinate for non-point location.
+          This is part of a coordinate pair to form the Northwest corner of a bounding box for non-point locations. All geographic coordinates must be provided in WGS84 decimal format. It is strongly recommended to record the geographic coordinates in the FLMD in cases where the data file does not include geographic coordinates and the entire file consists of measurements collected at a single location. The FLMD Extractor can extract the geographic coordinates or bounding box coordinates from a CSV file following the CSV Reporting Format.
         range: double # decimal degrees
 
       Northwest_Longitude_Coordinate:
         description: Northwest Longitude Coordinate for non-point location.
+          This is part of a coordinate pair to form the Northwest corner of a bounding box for non-point locations. All geographic coordinates must be provided in WGS84 decimal format. It is strongly recommended to record the geographic coordinates in the FLMD in cases where the data file does not include geographic coordinates and the entire file consists of measurements collected at a single location. The FLMD Extractor can extract the geographic coordinates or bounding box coordinates from a CSV file following the CSV Reporting Format.
         range: double # decimal degrees
 
       Southeast_Latitude_Coordinate:
         description: Southeast Latitude Coordinate for non-point location.
+          This is part of a coordinate pair to form the Southeast corner of a bounding box for non-point locations. All geographic coordinates must be provided in WGS84 decimal format. It is strongly recommended to record the geographic coordinates in the FLMD in cases where the data file does not include geographic coordinates and the entire file consists of measurements collected at a single location. The FLMD Extractor can extract the geographic coordinates or bounding box coordinates from a CSV file following the CSV Reporting Format.
         range: double # decimal degrees
 
       Southeast_Longitude_Coordinate:
         description: Southeast Longitude Coordinate for non-point location.
+          This is part of a coordinate pair to form the Southeast corner of a bounding box for non-point locations. All geographic coordinates must be provided in WGS84 decimal format. It is strongly recommended to record the geographic coordinates in the FLMD in cases where the data file does not include geographic coordinates and the entire file consists of measurements collected at a single location. The FLMD Extractor can extract the geographic coordinates or bounding box coordinates from a CSV file following the CSV Reporting Format.
         range: double # decimal degrees:
+        maximum_value: # what to put here?
+        minimum_value: # what to put here?
 
       Latitude:
         description: Coordinate for single point location.
+          This field is paired with "Longitude" to create a coordinate pair for a single point. All geographic coordinates must be provided in WGS84 decimal format. It is strongly recommended to record the geographic coordinates in the FLMD in cases where the data file does not include geographic coordinates and the entire file consists of measurements collected at a single location. The FLMD Extractor can extract the geographic coordinates or bounding box coordinates from a CSV file following the CSV Reporting Format.
+        range: double
+        maximum_value: 90 # what to put here?
+        minimum_value: -90 # what to put here?
 
       Longitude:
         description: Coordinate for single point location.
+          This field is paired with "Latitude" to create a coordinate pair for a single point. All geographic coordinates must be provided in WGS84 decimal format. It is strongly recommended to record the geographic coordinates in the FLMD in cases where the data file does not include geographic coordinates and the entire file consists of measurements collected at a single location. The FLMD Extractor can extract the geographic coordinates or bounding box coordinates from a CSV file following the CSV Reporting Format.
+        range: double
+        maximum_value: 180 # what to put here?
+        minimum_value: -180 # what to put here?
 
       Missing_Value_Codes:
-        description: Report missing value codes
+        description: Report missing value codes.
+          Report all Missing Value Codes. For columns containing numeric data, use "-9999" as the missing value code (or modify to match significant figures given the data). For columns containing character data, use "N/A" as the missing value code. If entering more than one missing value code, use a vertical bar "|" or semicolon ";" instead of a comma or protect the comma with matching double quotation marks around the entire value. For more information about commas not meant to be a delimiter (e.g. used within a cell), refer to the Delimiter section of the CSV Reporting Format Detailed Guide.
 
       Data_Orientation:
-        description: Orientation of tabular data
+        description: Orientation of tabular data.
+          Describe how the data are organized within the data matrix. Choose between "horizontal" (i.e., data are organized in rows) or "vertical" (i.e., data are organized in columns).
 
       Notes:
         description: Any information the provider would like to add.
+          Information provided would be data file specific. Details may include details on data file versioning, reporting format, software requirements, data quality, etc.
 

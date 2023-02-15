@@ -6,4 +6,5 @@
 File_Name: flmd_ameriflux
 #Date_Start: 2023-12-12
 File_Description: flmd data for ameriflux data package
-Southeast_Longitude_Coordinate: test_invalid_value # 20.02
+#Southeast_Longitude_Coordinate:  20 # test_invalid_value # 20.02
+Latitude: -90.8
